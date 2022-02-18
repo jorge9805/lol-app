@@ -1,7 +1,14 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import ChampionList from "../championList/ChampionList";
+import { SearchContext } from "../../LolApp";
 const AllScreen = () => {
-  return <div>All</div>;
+  const { search } = React.useContext(SearchContext);
+  return (
+    <div>
+      <p>All</p>
+      <ChampionList tag="all" search={search} />
+    </div>
+  );
 };
 
 export default AllScreen;

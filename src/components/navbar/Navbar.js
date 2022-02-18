@@ -2,15 +2,15 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import SearchBar from "../searchbar/SearchBar";
+import useGetChampionsByTags from "../../hooks/useGetChampionsByTags";
 
 const navigation = [
   { name: "All", href: "/", current: true },
   { name: "Assasins", href: "/assasins", current: false },
   { name: "Figthers", href: "/figthers", current: false },
-  { name: "Supports", href: "#", current: false },
   { name: "Mages", href: "/mages", current: false },
-  { name: "Tanks", href: "#", current: false },
   { name: "Login", href: "/login", current: false },
 ];
 
@@ -77,15 +77,8 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
+              <div className="absolute inset-y-0 right-0 flex gap-2 items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+                <SearchBar />
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>

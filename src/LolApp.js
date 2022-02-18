@@ -1,14 +1,21 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import "./LolApp.css";
 import AppRouter from "./routers/AppRouter";
-function LolApp() {
-  return (
-    <div>
-      <AppRouter />
-      <p className="text-blue-500 hover:text-blue-800 font-sans">My LoL App</p>
-    </div>
+import React from "react";
+export const SearchContext = React.createContext({
+  search: "",
+  setSearch: () => {},
+});
+const LolApp = () => {
+  const [search, setSearch] = React.useState("");
+  const value = React.useMemo(
+    () => ({ search, setSearch }),
+    [search, setSearch]
   );
-}
+  return (
+    <SearchContext.Provider value={value}>
+      <AppRouter />
+    </SearchContext.Provider>
+  );
+};
 
 export default LolApp;

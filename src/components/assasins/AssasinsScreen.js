@@ -1,8 +1,12 @@
 import React from "react";
-import { Routes } from "react-router-dom";
-
+import ChampionList from "../championList/ChampionList";
 const AssasinsScreen = () => {
-  return <div>Assasins</div>;
+  return (
+    <div>
+      <p>Assassin</p>
+      <ChampionList tag="Assassin" />
+    </div>
+  );
 };
 
 export default AssasinsScreen;
