@@ -4,6 +4,9 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
+import { SearchContext } from "../../LolApp";
+import { useContext } from "react";
+
 import useGetChampionsByTags from "../../hooks/useGetChampionsByTags";
 
 const navigation = [
@@ -22,6 +25,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const { search, setSearch } = useContext(SearchContext);
   return (
     <Disclosure as="nav" className="bg-gray-800 font-lato">
       {({ open }) => (
@@ -56,6 +60,9 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <NavLink
+                        onClick={() => {
+                          setSearch("");
+                        }}
                         key={item.name}
                         to={item.href}
                         className={
