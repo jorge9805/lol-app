@@ -11,6 +11,9 @@ const navigation = [
   { name: "Assasins", href: "/assasins", current: false },
   { name: "Figthers", href: "/figthers", current: false },
   { name: "Mages", href: "/mages", current: false },
+  { name: "Supports", href: "/supports", current: false },
+  { name: "Tanks", href: "/tanks", current: false },
+  { name: "Marksmen", href: "/marksmen", current: false },
   { name: "Login", href: "/login", current: false },
 ];
 
@@ -55,13 +58,22 @@ export default function Navbar() {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        className={({ isActive }) =>
-                          classNames(
-                            isActive
-                              ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium  "
-                          )
+                        className={
+                          ({ isActive }) => {
+                            console.log(isActive);
+                            return (
+                              "px-3 py-2 rounded-md text-sm font-medium " +
+                              (isActive
+                                ? "text-white bg-gray-900"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white ")
+                            );
+                          }
+                          // classNames(
+                          //   isActive
+                          //     ? "bg-gray-900 text-white"
+                          //     : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          //   "px-3 py-2 rounded-md text-sm font-medium  "
+                          // )
                         }
                         // className={classNames(
                         //   item.current
@@ -69,7 +81,7 @@ export default function Navbar() {
                         //     : "text-gray-300 hover:bg-gray-700 hover:text-white",
                         //   "px-3 py-2 rounded-md text-sm font-medium"
                         // )}
-                        aria-current={item.current ? "page" : undefined}
+                        // aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </NavLink>

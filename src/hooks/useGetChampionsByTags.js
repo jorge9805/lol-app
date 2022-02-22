@@ -27,9 +27,10 @@ const useGetChampionsByTags = (tag, search) => {
             loading: false,
           });
         } else {
-          const championsArray = championsArray.filter((champion) =>
+          championsArray = championsArray.filter((champion) =>
             champion.tags.includes(tag)
           );
+          console.log("championsArray", championsArray);
           setChampions({
             data: championsArray,
             loading: false,
