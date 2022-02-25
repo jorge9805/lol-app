@@ -2,13 +2,13 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
 import { SearchContext } from "../../LolApp";
+import AuthContext from "../../auth/authContext";
 import { useContext } from "react";
-
+import { types } from "../../types/types";
 import useGetChampionsByTags from "../../hooks/useGetChampionsByTags";
-
 const navigation = [
   { name: "All", href: "/", current: true },
   { name: "Assasins", href: "/assasins", current: false },
@@ -19,13 +19,21 @@ const navigation = [
   { name: "Marksmen", href: "/marksmen", current: false },
   { name: "Login", href: "/login", current: false },
 ];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const { search, setSearch } = useContext(SearchContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const { name } = user;
+  const handleLogout = (dispatch, navigate) => {
+    dispatch({ type: types.LOGOUT_SUCCESS });
+    navigate("/login", { replace: true });
+  };
+  console.log(name);
+  console.log("volvi");
   return (
     <Disclosure as="nav" className="bg-gray-800 font-lato">
       {({ open }) => (
@@ -67,7 +75,7 @@ export default function Navbar() {
                         to={item.href}
                         className={
                           ({ isActive }) => {
-                            console.log(isActive);
+                            console.log("isActive", isActive);
                             return (
                               "px-3 py-2 rounded-md text-sm font-medium " +
                               (isActive
@@ -100,7 +108,7 @@ export default function Navbar() {
                 <SearchBar />
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
-                  <div>
+                  <div className="flex items-center gap-1">
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -109,6 +117,7 @@ export default function Navbar() {
                         alt=""
                       />
                     </Menu.Button>
+                    <p className="text-white  ">{name}</p>
                   </div>
                   <Transition
                     as={Fragment}
@@ -148,15 +157,15 @@ export default function Navbar() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <button
+                            onClick={() => handleLogout(dispatch, navigate)}
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "flex px-4 py-2 text-sm text-gray-700 w-full justify-start"
                             )}
                           >
-                            Sign out
-                          </a>
+                            Log out
+                          </button>
                         )}
                       </Menu.Item>
                     </Menu.Items>

@@ -8,6 +8,8 @@ const ChampionList = ({ tag, search }) => {
         <div className="scroll-auto snap-start flex justify-center items-center h-screen">
           <h1>Loading...</h1>
         </div>
+      ) : championList.length === 0 ? (
+        <h1>No champions found</h1>
       ) : (
         <div className="animate-fade p-10 grid grid-cols-1 scroll-auto sm:grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {championList.map((champion) => (

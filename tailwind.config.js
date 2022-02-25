@@ -1,6 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    // change the responsive breakpoints
+    screens: {
+      sm: "640px",
+      md: "1048px",
+      xl: "1280px",
+    },
     fontFamily: {
       lato: ["Lato", "sans-serif"],
       sans: ["Inter", "sans-serif"],
