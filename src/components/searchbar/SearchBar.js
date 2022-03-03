@@ -6,7 +6,7 @@ const SearchBar = () => {
     setSearch(e.target.value);
   };
   return (
-    <div class="pt-1 relative mx-auto text-gray-300">
+    <div class="pt-1 relative text-gray-300 md:mx-auto">
       <input
         class="bg-gray-600 h-7 px-2 pr-5 pl-7 rounded-lg text-sm focus:outline-none"
         type="search"

@@ -1,11 +1,12 @@
 import React from "react";
 import { useContext } from "react";
 import AuthContext from "../auth/authContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
-  console.log("alo", user.isAuthenticated);
+  const location = useLocation();
+  localStorage.setItem("currentLocation", location.pathname);
   return user.isAuthenticated ? children : <Navigate to="/login" />;
 };
 

@@ -3,12 +3,7 @@ import ChampionList from "../championList/ChampionList";
 import { SearchContext } from "../../LolApp";
 const SupportsScreen = () => {
   const { search } = React.useContext(SearchContext);
-  return (
-    <div>
-      <p>Mages</p>
-      <ChampionList tag="Support" search={search} />
-    </div>
-  );
+  return <ChampionList tag="Support" search={search} />;
 };
 
 export default SupportsScreen;

@@ -3,12 +3,7 @@ import ChampionList from "../championList/ChampionList";
 import { SearchContext } from "../../LolApp";
 const AssasinsScreen = () => {
   const { search } = React.useContext(SearchContext);
-  return (
-    <div>
-      <p>Assassin</p>
-      <ChampionList tag="Assassin" search={search} />
-    </div>
-  );
+  return <ChampionList tag="Assassin" search={search} />;
 };
 
 export default AssasinsScreen;

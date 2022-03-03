@@ -4,8 +4,8 @@ import AuthContext from "../auth/authContext";
 import { Navigate } from "react-router-dom";
 
 const PublicRoute = ({ children }) => {
+  console.log("Navigate", Navigate);
   const { user } = useContext(AuthContext);
-  console.log("jelo", user.isAuthenticated);
   return user.isAuthenticated ? <Navigate to="/" /> : children;
 };
 

@@ -6,10 +6,11 @@ const LoginScreen = () => {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+  const location = localStorage.getItem("currentLocation") || "/";
   const handleClick = (e, username) => {
     e.preventDefault();
     dispatch({ type: types.LOGIN_SUCCESS, payload: username });
-    navigate("/", { replace: true });
+    navigate(location, { replace: true });
   };
   return (
     <div>

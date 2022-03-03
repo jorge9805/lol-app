@@ -17,7 +17,6 @@ const navigation = [
   { name: "Supports", href: "/supports", current: false },
   { name: "Tanks", href: "/tanks", current: false },
   { name: "Marksmen", href: "/marksmen", current: false },
-  { name: "Login", href: "/login", current: false },
 ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -39,7 +38,7 @@ export default function Navbar() {
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2  md:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
+            <div className="relative flex items-center justify-between h-20 md:h-16">
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -51,17 +50,12 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
+              <div className="flex-1 flex items-center flex-col justify-center flex-wrap md:flex-row md:items-stretch md:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-8 w-auto"
+                    className="lg:block h-8 w-auto"
                     src="https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo-1.png"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo-1.png"
-                    alt="Workflow"
+                    alt="LolApp"
                   />
                 </div>
                 <div className="hidden md:block md:ml-6">
@@ -103,9 +97,9 @@ export default function Navbar() {
                     ))}
                   </div>
                 </div>
+                <SearchBar className="block" />
               </div>
               <div className="absolute inset-y-0 right-0 flex gap-2 items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-                <SearchBar />
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div className="flex items-center gap-1">
@@ -117,7 +111,7 @@ export default function Navbar() {
                         alt=""
                       />
                     </Menu.Button>
-                    <p className="text-white  ">{name}</p>
+                    <p className="text-white hidden sm:block  ">{name}</p>
                   </div>
                   <Transition
                     as={Fragment}

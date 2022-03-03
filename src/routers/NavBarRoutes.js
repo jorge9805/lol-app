@@ -13,18 +13,16 @@ const NavBarRoutes = () => {
   return (
     <>
       <Navbar />
-      <div className="px-7 py-3">
-        <Routes>
-          <Route path="/champion/:championId" element={<ChampionScreen />} />
-          <Route path="assasins" element={<AssasinsScreen />} />
-          <Route path="figthers" element={<FigthersScreen />} />
-          <Route path="mages" element={<MagesScreen />} />
-          <Route path="tanks" element={<TanksScreen />} />
-          <Route path="supports" element={<SupportsScreen />} />
-          <Route path="marksmen" element={<MarksmenScreen />} />
-          <Route path="/" element={<AllScreen />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/champion/:championId" element={<ChampionScreen />} />
+        <Route path="assasins" element={<AssasinsScreen />} />
+        <Route path="figthers" element={<FigthersScreen />} />
+        <Route path="mages" element={<MagesScreen />} />
+        <Route path="tanks" element={<TanksScreen />} />
+        <Route path="supports" element={<SupportsScreen />} />
+        <Route path="marksmen" element={<MarksmenScreen />} />
+        <Route path="/" element={<AllScreen />} />
+      </Routes>
     </>
   );
 };
