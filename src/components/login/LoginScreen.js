@@ -77,7 +77,7 @@ const LoginScreen = () => {
                 <img
                   key={champion.id}
                   onClick={(e) => handleLogin(e, user, champion)}
-                  src={`http://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/${champion.id}.png`}
+                  src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/${champion.id}.png`}
                   alt={champion.name}
                   className="w-12 sm:w-20 hover:cursor-pointer"
                 />
