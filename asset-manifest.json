@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/lol-app/static/css/main.89f2670d.css",
-    "main.js": "/lol-app/static/js/main.9cab6349.js",
+    "main.js": "/lol-app/static/js/main.a756af22.js",
     "index.html": "/lol-app/index.html",
     "main.89f2670d.css.map": "/lol-app/static/css/main.89f2670d.css.map",
-    "main.9cab6349.js.map": "/lol-app/static/js/main.9cab6349.js.map"
+    "main.a756af22.js.map": "/lol-app/static/js/main.a756af22.js.map"
   },
   "entrypoints": [
     "static/css/main.89f2670d.css",
-    "static/js/main.9cab6349.js"
+    "static/js/main.a756af22.js"
   ]
 }
