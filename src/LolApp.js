@@ -12,6 +12,7 @@ const LolApp = () => {
     return (
       JSON.parse(localStorage.getItem("user")) || {
         name: null,
+        img: null,
         isAuthenticated: false,
       }
     );

@@ -2,6 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     // change the responsive breakpoints
+
     screens: {
       sm: "780px",
       md: "1048px",
@@ -13,8 +14,15 @@ module.exports = {
       fira: ["Fira Sans", "sans-serif"],
       lato: ["Lato", "sans-serif"],
       sans: ["Inter", "sans-serif"],
+      lol: ["BeaufortforLOL"],
     },
     extend: {
+      fontWeight: {
+        lolBold: "1000",
+      },
+      colors: {
+        turquoise: "#0bc4e2",
+      },
       gridTemplateColumns: {
         gridlol: "repeat(auto-fill, minmax(280px, 1fr))",
       },

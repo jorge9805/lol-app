@@ -6,7 +6,8 @@ export const authReducer = (state = {}, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        name: action.payload,
+        name: action.payload.name,
+        img: action.payload.img,
       };
     case types.LOGOUT_SUCCESS:
       return {

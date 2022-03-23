@@ -26,7 +26,8 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { search, setSearch } = useContext(SearchContext);
   const { user, dispatch } = useContext(AuthContext);
-  const { name } = user;
+  console.log(user);
+  const { name, img } = user;
   const handleLogout = (dispatch, navigate) => {
     dispatch({ type: types.LOGOUT_SUCCESS });
     navigate("/login", { replace: true });
@@ -67,30 +68,14 @@ export default function Navbar() {
                         }}
                         key={item.name}
                         to={item.href}
-                        className={
-                          ({ isActive }) => {
-                            console.log("isActive", isActive);
-                            return (
-                              "px-3 py-2 rounded-md text-sm font-medium " +
-                              (isActive
-                                ? "text-white bg-gray-900"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white ")
-                            );
-                          }
-                          // classNames(
-                          //   isActive
-                          //     ? "bg-gray-900 text-white"
-                          //     : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          //   "px-3 py-2 rounded-md text-sm font-medium  "
-                          // )
-                        }
-                        // className={classNames(
-                        //   item.current
-                        //     ? "bg-gray-900 text-white"
-                        //     : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        //   "px-3 py-2 rounded-md text-sm font-medium"
-                        // )}
-                        // aria-current={item.current ? "page" : undefined}
+                        className={({ isActive }) => {
+                          return (
+                            "px-3 py-2 rounded-md text-sm font-medium " +
+                            (isActive
+                              ? "text-white bg-gray-900"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white ")
+                          );
+                        }}
                       >
                         {item.name}
                       </NavLink>
@@ -105,11 +90,7 @@ export default function Navbar() {
                   <div className="flex items-center gap-1">
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="http://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/Aatrox.png"
-                        alt=""
-                      />
+                      <img className="h-8 w-8 rounded-full" src={img} alt="" />
                     </Menu.Button>
                     <p className="text-white hidden sm:block  ">{name}</p>
                   </div>
@@ -122,8 +103,79 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={() => handleLogout(dispatch, navigate)}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "flex px-4 py-2 text-sm text-gray-700 w-full justify-start"
+                            )}
+                          >
+                            Log out
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+            </div>
+          </div>
+
+          <Disclosure.Panel className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navigation.map((item) => (
+                <NavLink
+                  onClick={() => {
+                    setSearch("");
+                  }}
+                  key={item.name}
+                  to={item.href}
+                  className={({ isActive }) => {
+                    return (
+                      "block px-3 py-2 rounded-md text-base font-medium" +
+                      (isActive
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                    );
+                  }}
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  );
+}
+
+//   ? "bg-gray-900 text-white"
+//   : "text-gray-300 hover:bg-gray-700 hover:text-white",
+// "block px-3 py-2 rounded-md text-base font-medium"
+
+//doing the active classes with a function but we can also do it with navlink
+
+// classNames(
+//   isActive
+//     ? "bg-gray-900 text-white"
+//     : "text-gray-300 hover:bg-gray-700 hover:text-white",
+//   "px-3 py-2 rounded-md text-sm font-medium  "
+// )
+// className={classNames(
+//   item.current
+//     ? "bg-gray-900 text-white"
+//     : "text-gray-300 hover:bg-gray-700 hover:text-white",
+//   "px-3 py-2 rounded-md text-sm font-medium"
+// )}
+// aria-current={item.current ? "page" : undefined}
+
+{
+  /*some menu items for implementation
+                                                 <Menu.Item>
                         {({ active }) => (
                           <a
                             href="#"
@@ -148,49 +200,5 @@ export default function Navbar() {
                             Settings
                           </a>
                         )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <button
-                            onClick={() => handleLogout(dispatch, navigate)}
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "flex px-4 py-2 text-sm text-gray-700 w-full justify-start"
-                            )}
-                          >
-                            Log out
-                          </button>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
-            </div>
-          </div>
-
-          <Disclosure.Panel className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
-  );
+                      </Menu.Item> */
 }
