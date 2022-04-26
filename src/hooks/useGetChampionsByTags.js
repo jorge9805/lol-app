@@ -11,7 +11,7 @@ const useGetChampionsByTags = (tag, search) => {
   useEffect(() => {
     axios
       .get(
-        `http://ddragon.leagueoflegends.com/cdn/12.3.1/data/en_US/champion.json`
+        `https://ddragon.leagueoflegends.com/cdn/12.3.1/data/en_US/champion.json`
       )
       .then((res) => {
         const data = res.data.data;

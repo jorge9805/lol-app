@@ -10,7 +10,7 @@ const useGetChampionById = (championId) => {
   useEffect(() => {
     axios
       .get(
-        `http://ddragon.leagueoflegends.com/cdn/12.3.1/data/en_US/champion/${championId}.json`
+        `https://ddragon.leagueoflegends.com/cdn/12.3.1/data/en_US/champion/${championId}.json`
       )
       .then((res) => {
         let data = res.data.data;

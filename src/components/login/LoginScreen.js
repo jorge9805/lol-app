@@ -23,7 +23,7 @@ const LoginScreen = () => {
           type: types.LOGIN_SUCCESS,
           payload: {
             name: user,
-            img: `http://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/${champion.id}.png`,
+            img: `https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/${champion.id}.png`,
           },
         });
         navigate(location, { replace: true });
