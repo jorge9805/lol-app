@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import ChampionCard from "../championCard/ChampionCard";
 import useGetChampionsByTags from "../../hooks/useGetChampionsByTags";
 const ChampionList = ({ tag, search }) => {
-  const { data: championList, loading } = useGetChampionsByTags(
-    (tag = "all"),
-    search
-  );
+  const { data: championList, loading } = useGetChampionsByTags(tag, search);
   return (
     <div className="p-0 bg-slate-100 sm:p-14 xl:px-72 xl:py-14">
       {loading ? (
