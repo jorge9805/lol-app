@@ -21,6 +21,7 @@ const NavBarRoutes = () => {
         <Route path="tanks" element={<TanksScreen />} />
         <Route path="supports" element={<SupportsScreen />} />
         <Route path="marksmen" element={<MarksmenScreen />} />
+        <Route path="/lol-app" element={<AllScreen />} />
         <Route path="/" element={<AllScreen />} />
       </Routes>
     </>

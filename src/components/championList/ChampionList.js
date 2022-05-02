@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import ChampionCard from "../championCard/ChampionCard";
 import useGetChampionsByTags from "../../hooks/useGetChampionsByTags";
 const ChampionList = ({ tag, search }) => {

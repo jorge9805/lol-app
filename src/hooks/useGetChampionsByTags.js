@@ -28,6 +28,7 @@ const useGetChampionsByTags = (tag, search) => {
             loading: false,
           });
         } else {
+          console.log("tag", tag);
           championsArray = championsArray.filter((champion) =>
             champion.tags.includes(tag)
           );
